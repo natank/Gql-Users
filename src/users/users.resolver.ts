@@ -28,6 +28,7 @@ export class UsersResolver {
   async getCompany(@Parent() user: UserDto) {
     const { companyId } = user;
     const result = await this.usersService.findCompanyById(companyId);
+    return result;
   }
 
   @ResolveField('position', (returns) => Position)
