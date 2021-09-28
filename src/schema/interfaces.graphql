@@ -1,0 +1,34 @@
+interface IUser {
+  id: String!
+
+  firstName: String!
+
+  age: Int!
+
+  company: Company!
+
+  position: Position!
+
+  friends: [IUser!]!
+
+  personalDetails: PersonalDetails!
+}
+
+interface IPosition {
+  id: String!
+
+  name: String!
+
+  description: String!
+}
+
+interface IPersonalDetails {
+  gender: String!
+  status: String!
+  address: Address!
+}
+
+interface IAddress {
+  city: String!
+  streen: String!
+}

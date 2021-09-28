@@ -1,20 +1,41 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { join } from 'path';
-import { AppController } from './app.controller';
-import { UsersRepository } from './users/users.repository';
-import { UsersResolver } from './users/users.resolver';
-import { UsersService } from './users/users.service';
+import { CompaniesRepository } from './repositories';
+import { UsersRepository } from './repositories/users.repository';
+import {
+  UsersResolver,
+  CompaniesResolver,
+  UserPositionResolver,
+  UserFriendsResolver,
+  UserCompanyResolver,
+  CompanyUserResolver,
+  AddressResolver,
+  PersonalDetailsResolver,
+} from './resolvers';
+
+import { UsersService, CompaniesService } from './services';
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
       debug: false,
       playground: true,
-      autoSchemaFile: join(process.cwd(), 'schema.gql'),
-      sortSchema: true,
+      typePaths: ['./**/*.graphql'],
     }),
   ],
-  providers: [UsersResolver, UsersService, UsersRepository],
+  providers: [
+    UsersService,
+    CompaniesService,
+    UsersRepository,
+    CompaniesRepository,
+    UsersResolver,
+    CompaniesResolver,
+    UserCompanyResolver,
+    CompanyUserResolver,
+    UserPositionResolver,
+    UserFriendsResolver,
+    PersonalDetailsResolver,
+    AddressResolver,
+  ],
 })
 export class AppModule {}

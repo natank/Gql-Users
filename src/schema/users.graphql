@@ -1,0 +1,84 @@
+type Query {
+  user(id: String!): User
+  users: [User]
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput): User
+  updateUser(createUserInput: UpdateUserInput, id: String): User
+  deleteUser(id: String): Boolean
+}
+
+type User {
+  id: String!
+
+  firstName: String
+
+  age: Int
+
+  company: Company
+
+  position: Position
+
+  friends: [User]
+
+  personalDetails: PersonalDetails
+}
+
+type Position {
+  id: String!
+
+  name: String
+
+  description: String!
+}
+
+type PersonalDetails {
+  gender: String
+  status: String
+  address: Address
+}
+
+type Address {
+  city: String
+  street: String
+}
+
+input CreateUserInput {
+  firstName: String
+
+  age: Int!
+
+  companyId: String!
+
+  positionId: String!
+
+  friendIds: [String]
+
+  personalDetails: PersonalDetailsInput
+}
+
+input UpdateUserInput {
+  firstName: String
+
+  age: Int
+
+  companyId: String
+
+  positionId: String
+
+  friendIds: [String]
+
+  personalDetails: PersonalDetailsInput
+}
+
+input PersonalDetailsInput {
+  gender: String
+  status: String
+  address: AddressInput
+}
+
+input AddressInput {
+  city: String
+  street: String
+}

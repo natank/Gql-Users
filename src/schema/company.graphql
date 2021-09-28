@@ -1,0 +1,35 @@
+type Query {
+  company(id: String!): Company
+  companies: [Company]
+}
+
+type Mutation {
+  createCompany(createCompanyInput: CreateCompanyInput): Company
+  deleteCompany(deleteCompanyInput: CreateCompanyInput): Boolean
+}
+
+type Company {
+  id: String!
+
+  name: String
+
+  description: String
+
+  workers: [User]
+}
+
+type Position {
+  id: String!
+
+  name: String
+
+  description: String
+}
+
+input CreateCompanyInput {
+  name: String
+
+  description: String
+
+  workerIds: [String]
+}
